@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><title>Cadastro</title></head>
+<body>
+  <h2>Cadastro</h2>
+  <form id="registerForm">
+    <input type="text" id="nome" placeholder="Nome" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="senha" placeholder="Senha" required>
+    <button type="submit">Cadastrar</button>
+  </form>
+  <p>Já tem conta? <a href="index.html">Login</a></p>
+
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+  <script src="firebase.js"></script>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      auth.createUserWithEmailAndPassword(email, senha)
+        .then((cred) => {
+          return db.collection("usuarios").doc(cred.user.uid).set({
+            nome: nome,
+            email: email,
+            plano: "Gratuito",
+            validade: null
+          });
+        })
+        .then(() => {
+          window.location.href = "dashboard.html";
+        })
+        .catch(err => alert(err.message));
+    });
+  </script>
+</body>
+</html>
