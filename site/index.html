@@ -13,19 +13,32 @@
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
-  <script src="firebase.js"></script>
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const senha = document.getElementById('senha').value;
+  <script type="module>
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
 
-      auth.signInWithEmailAndPassword(email, senha)
-        .then(() => {
-          window.location.href = "dashboard.html";
-        })
-        .catch(err => alert(err.message));
-    });
-  </script>
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyAeOww2dMP_ORi3D0PO-WOyJkSca8RY908",
+    authDomain: "decants-a0187.firebaseapp.com",
+    projectId: "decants-a0187",
+    storageBucket: "decants-a0187.firebasestorage.app",
+    messagingSenderId: "248112382407",
+    appId: "1:248112382407:web:73023e4f02440620dfd9e2",
+    measurementId: "G-HQXS2C5TRK"
+  };
+
+  
+  firebase.initializeApp(firebaseConfig);
+
+  console.log('antes');
+  firebase.auth().SignInWithEmailAndPassword('arthurdf08@gmail.com', '123456').then(Response =>{
+    console.log('sucess')
+  }).catch(error=> {
+    console.log('error')
+  });
+  console.log('depois');
+</script>
 </body>
 </html>
