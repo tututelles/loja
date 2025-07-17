@@ -1,34 +1,47 @@
 <!DOCTYPE html>
-<html>
-<head><title>Dashboard</title></head>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+</head>
 <body>
-  <h2>Bem-vindo, <span id="nomeUsuario"></span>!</h2>
-  <p>Plano: <span id="planoUsuario"></span></p>
-  <p>Validade: <span id="validadeUsuario"></span></p>
+  <h2>Bem-vindo à sua conta</h2>
+  <p id="user-info"></p>
   <button onclick="logout()">Sair</button>
 
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
-  <script src="firebase.js"></script>
-  <script>
-    auth.onAuthStateChanged(user => {
-      if (!user) {
-        window.location.href = "index.html";
-        return;
-      }
 
-      db.collection("usuarios").doc(user.uid).get().then(doc => {
-        const data = doc.data();
-        document.getElementById("nomeUsuario").innerText = data.nome;
-        document.getElementById("planoUsuario").innerText = data.plano;
-        document.getElementById("validadeUsuario").innerText = data.validade || "Sem validade";
-      });
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAeOww2dMP_ORi3D0PO-WOyJkSca8RY908",
+      authDomain: "decants-a0187.firebaseapp.com",
+      projectId: "decants-a0187",
+      storageBucket: "decants-a0187.appspot.com",
+      messagingSenderId: "248112382407",
+      appId: "1:248112382407:web:73023e4f02440620dfd9e2"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    // 🔧 Definir auth
+    const auth = firebase.auth();
+
+    // Verifica se o usuário está logado
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById("user-info").innerText = `Logado como: ${user.email}`;
+      } else {
+        alert("Você não está logado!");
+        window.location.href = "index2.html";
+      }
     });
 
+    // Logout
     function logout() {
       auth.signOut().then(() => {
-        window.location.href = "index.html";
+        window.location.href = "login.html";
       });
     }
   </script>

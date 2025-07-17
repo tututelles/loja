@@ -1,17 +1,51 @@
 <!DOCTYPE html>
-<html>
-<head><title>Cadastro</title></head>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastro de Usuário</title>
+</head>
 <body>
   <h2>Cadastro</h2>
   <form id="registerForm">
-    <input type="text" id="nome" placeholder="Nome" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="senha" placeholder="Senha" required>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Senha (mínimo 6 caracteres)" required minlength="6" />
     <button type="submit">Cadastrar</button>
   </form>
-  <p>Já tem conta? <a href="index.html">Login</a></p>
+  <p>Já tem conta? <a href="login.html">Faça login</a></p>
 
-  
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
 
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAeOww2dMP_ORi3D0PO-WOyJkSca8RY908",
+      authDomain: "decants-a0187.firebaseapp.com",
+      projectId: "decants-a0187",
+      storageBucket: "decants-a0187.appspot.com",
+      messagingSenderId: "248112382407",
+      appId: "1:248112382407:web:73023e4f02440620dfd9e2"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          alert("Usuário criado com sucesso!");
+          window.location.href = "index2.html"; // Redireciona para login após criar conta
+        })
+        .catch(error => {
+          console.error("Erro ao cadastrar:", error.message);
+          alert("Erro: " + error.message);
+        });
+    });
+  </script>
 </body>
 </html>
