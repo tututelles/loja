@@ -1,5 +1,6 @@
 /* Reset e base */
 * {
+  scroll-behavior: smooth;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -228,12 +229,6 @@ footer{
   font-family: serif;
 }
 
-.box2{
-  justify-content: center;
-  margin-bottom: 20%;
-  align-items: center;
-  
-}
 .bemvindo{
   font-size: 1.5rem;
 }
@@ -402,7 +397,6 @@ form{
 
   font-family: 'Playfair Display', serif;
   text-decoration: none;
-  width: ;
   font-size: 17px;
   background: transparent;
   border: none;
@@ -416,7 +410,6 @@ form{
 .btn::before {
   content: "";
   position: absolute;
-  margin-left: ;
   bottom: 45px;
   z-index: 5;
   height: 2px;
@@ -444,4 +437,53 @@ font-family: 'Playfair Display', serif;
   color: red;
 font-family: 'Playfair Display', serif;
   font-weight: 500;
+}
+
+#user-info{
+  width: fit-content;
+  font-weight: 800;
+  margin-top: 10%;
+}
+#user-name{
+  width: fit-content;
+  font-weight: 800;
+  margin-top: 10%;
+  font-size: 2rem;
+  top: -10%;
+}
+#user-uid{
+margin-top: 10%;
+}
+.box2{
+  position:relative;
+  height: 70%;
+  justify-content: ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btnlogo{
+  font-style: none;
+  text-decoration: none;
+  color: #000;
+}
+.paycard{
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  align-items: center;
+  height: 600px;
+  border-radius: 30px;
+  background: #d8d8d8;
+  box-shadow: 15px 15px 30px #bebebe,
+             -15px -15px 30px #ffffff;
+}
+.textop{
+  margin-left: auto;
+  margin-right: auto;
 }

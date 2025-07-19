@@ -13,7 +13,7 @@
 <body>
   <header class="header">
     <div class="container header-content">
-      <h1 class="logo">EssenceBox</h1>
+      <a class="btnlogo" href="file.html"><h1 class="logo">EssenceBox</h1></a>
       <nav class="nav">
         <a href="#como" class="nav-link">Como Funciona</a>
         <a href="#planos" class="nav-link">Planos</a>
@@ -27,8 +27,10 @@
   <h2 class="animate__animated animate__fadeInDown animated__delay0.25s" class="bemvindo"></h2>
   <h2 style="font-size: 3rem;" >Bem-vindo à sua conta</h2>
    <p style="font-size: 15px;" id="log"></p>
+   <p id="user-name"></p>
   <p id="user-info"></p>
-  <p id="user-name"></p>
+  
+  <p id="user-uid"></p>
   </div>
   
   
@@ -74,6 +76,7 @@
       if (user) {
         document.getElementById("user-info").innerText = `${user.email}`;
         document.getElementById("user-name").innerText = `${user.displayName}`;
+        document.getElementById("user-uid").innerText = `${user.uid}`;
       } else {
             document.getElementById("log").innerHTML = "Vôce não está logado!";
             setTimeout(() => {

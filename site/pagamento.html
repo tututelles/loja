@@ -15,7 +15,7 @@
   <!-- Header -->
   <header class="header">
     <div class="container header-content">
-      <h1 class="logo">EssenceBox</h1>
+      <a class="btnlogo" href="file.html"><h1 class="logo">EssenceBox</h1></a>
       <nav class="nav">
         <a href="#como" class="nav-link">Como Funciona</a>
         <a href="#planos" class="nav-link">Planos</a>
@@ -23,11 +23,19 @@
       </nav>
     </div>
   </header>
-    <div class="container2">
-        <h2 class="textop1">Realize o pagamento</h2>
-        <img src="" id="qrcode">
-        <h3 class="textop">Após a confirmação do seu pagamento,<br>
-            entraremos em contato com o whatsapp <br>
+    <div class="paycard">
+        <h2 style="color: black;" class="textop1">Realize o pagamento</h2>
+        <script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
+<stripe-buy-button
+  buy-button-id="buy_btn_1RmfWrFT99dVekdMZI7TPP2B"
+  publishable-key="pk_test_51RmSgaFT99dVekdMGGgv6FrVRWZggDLNFtbhpYKNvdfLoN9v4RWirnLWOX18mfRRAmL6scGC0pJyVippddiQoEiV00CKTwNjo9"
+>
+</stripe-buy-button>
+        <h3 style="color: black; font-weight: 900; font-size: 1.1rem;" class="textop">Após a confirmação do seu pagamento,
+            entraremos  em contato <br> pelo whatsapp 
              de nossa empresa, Obrigado pela preferência!</h3>
     </div>
   <footer class="footer">
