@@ -396,13 +396,13 @@ form{
  width: 100%;
 }
 .cards .texto10{
-  position: absolute;
+  position: relative;
 }
 .btn {
 
   font-family: 'Playfair Display', serif;
   text-decoration: none;
-  width: 200px;
+  width: ;
   font-size: 17px;
   background: transparent;
   border: none;
@@ -416,8 +416,9 @@ form{
 .btn::before {
   content: "";
   position: absolute;
-  margin-left: -5px;
-  bottom: 60px;
+  margin-left: ;
+  bottom: 45px;
+  z-index: 5;
   height: 2px;
   width: 0%;
   background-color: #000000;
@@ -430,9 +431,15 @@ form{
   transition-delay: 0.5s;
 }
 .btn:hover::before {
-  width: 5.75%;
+  width: 6%;
 }
 .erro{
+  font-size: 1rem;
+  color: red;
+font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+#log{
   font-size: 1rem;
   color: red;
 font-family: 'Playfair Display', serif;

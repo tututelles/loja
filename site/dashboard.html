@@ -26,6 +26,7 @@
     <div class="box2">
   <h2 class="animate__animated animate__fadeInDown animated__delay0.25s" class="bemvindo"></h2>
   <h2 style="font-size: 3rem;" >Bem-vindo à sua conta</h2>
+   <p style="font-size: 15px;" id="log"></p>
   <p id="user-info"></p>
   <p id="user-name"></p>
   </div>
@@ -73,17 +74,19 @@
       if (user) {
         document.getElementById("user-info").innerText = `${user.email}`;
         document.getElementById("user-name").innerText = `${user.displayName}`;
-        document.getElementById("user-name").innerText = user.displayName;
       } else {
-        alert("Você não está logado!");
-        window.location.href = "index2.html";
+            document.getElementById("log").innerHTML = "Vôce não está logado!";
+            setTimeout(() => {
+            console.log("Essa mensagem demorou 2 segundo para ser transmitida");
+            window.location.href = "index2.html";
+            }, 2000);
       }
     });
 
     // Logout
     function logout() {
       auth.signOut().then(() => {
-        window.location.href = "login.html";
+        window.location.href = "index2.html";
       });
     }
     
