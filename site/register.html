@@ -3,15 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <title>Cadastro de Usuário</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Cadastro</h2>
-  <form id="registerForm">
-    <input type="email" id="email" placeholder="Email" required />
-    <input type="password" id="password" placeholder="Senha (mínimo 6 caracteres)" required minlength="6" />
-    <button type="submit">Cadastrar</button>
-  </form>
-  <p>Já tem conta? <a href="login.html">Faça login</a></p>
+  <header class="header">
+    <div class="container header-content">
+      <h1 class="logo">EssenceBox</h1>
+      <nav class="nav">
+        <a href="#como" class="nav-link">Como Funciona</a>
+        <a href="#planos" class="nav-link">Planos</a>
+        <a href="quiz.html" class="btn-primary">Começar Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="cards">
+    <h2 style="font-size: 3rem;">Cadastro</h2>
+    <form id="registerForm">
+      <div class="input-group">
+        <input required id="name" type="text" name="name" autocomplete="off" class="input">
+        <label class="user-label">Nome</label>
+      </div>
+      <div class="input-group">
+        <input required id="email" type="email" name="email" autocomplete="off" class="input">
+        <label class="user-label">Email</label>
+      </div>
+      <div class="input-group">
+        <input id="password" required type="password" name="password" minlength="6" autocomplete="off" class="input">
+        <label class="user-label">Senha</label>
+      </div>
+      <button class="buttonlogin" type="submit">Cadastrar</button>
+    </form>
+
+    <p class="texto10">Já tem conta? <a class="btn" href="index2.html">Faça login</a></p>
+  </div>
 
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
@@ -33,13 +58,20 @@
     document.getElementById("registerForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
+      const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
       auth.createUserWithEmailAndPassword(email, password)
         .then(userCredential => {
-          alert("Usuário criado com sucesso!");
-          window.location.href = "index2.html"; // Redireciona para login após criar conta
+          const user = userCredential.user;
+
+          return user.updateProfile({
+            displayName: name
+          }).then(() => {
+            alert("Usuário cadastrado com sucesso!");
+            window.location.href = "index2.html";
+          });
         })
         .catch(error => {
           console.error("Erro ao cadastrar:", error.message);

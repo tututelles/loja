@@ -3,17 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Login com Firebase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+<header class="header">
+    <div class="container header-content">
+      <h1 class="logo">EssenceBox</h1>
+      <nav class="nav">
+        <a href="#como" class="nav-link">Como Funciona</a>
+        <a href="#planos" class="nav-link">Planos</a>
+        <a href="quiz.html" class="btn-primary">Começar Quiz</a>
+      </nav>
+    </div>
+  </header>
+  
 <body>
-  <h2>Login</h2>
+  <div class="" id="cards">
+    
+  <h2 style="font-size: 3rem;" >Login</h2>
   <form id="loginForm">
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="password" placeholder="Senha" required>
-    <button type="submit">Entrar</button>
+    <div class="input-group">
+    <p id="erro" class="erro"></p>
+    </div>
+    <div class="input-group">
+      <input required="" id="email" type="email" name="text" autocomplete="off" class="input">
+      <label class="user-label">Email</label>
+    </div>
+    <div class="input-group">
+      <input id="password" required="" type="password" name="text" autocomplete="off" class="input">
+      <label class="user-label">Password</label>
+    </div>
+    <button class="buttonlogin" type="submit">Entrar</button>
+    <link rel="stylesheet" href="style.css">
   </form>
 
-  <p>Não tem conta? <a href="register.html">Cadastre-se</a></p>
-
+  <p class="texto10">Não tem conta? <a class="btn" href="register.html">Cadastre-se</a></p>
+</div>
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
@@ -50,8 +75,15 @@
             window.location.href = "dashboard.html";
           })
           .catch(error => {
-            console.error("❌ Erro ao fazer login:", error.message);
-            alert("Erro no login: " + error.message);
+            //console.error("❌ Erro ao fazer login:", error.message);
+            const erro = document.getElementById("erro");
+            erro.innerHTML = "Erro ao acessar, usuário e/ou senha incorretos";
+            setTimeout(() => {
+            console.log("Essa mensagem demorou 2 segundo para ser transmitida");
+            window.location.href = "index2.html";
+            }, 2000);
+            
+            //alert("Erro no login: " + error.message);
           });
       });
     });
